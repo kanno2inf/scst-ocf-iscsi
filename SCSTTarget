@@ -38,7 +38,7 @@ OCF_RESKEY_portals_default="none"
 
 # Lockfile, used for selecting a target ID
 LOCKFILE=${HA_RSCTMP}/SCSTTarget-${OCF_RESKEY_implementation}.lock
-ISCSI_DAEMON="/usr/local/sbin/iscsi-scstd"
+ISCSI_DAEMON="/usr/sbin/iscsi-scstd"
 SYSFS_PATH="/sys/kernel/scst_tgt/targets/iscsi"
 SCST_BASE="/sys/kernel/scst_tgt"
 ISCSI_BASE="${SCST_BASE}/targets/iscsi"
