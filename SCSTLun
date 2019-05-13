@@ -252,6 +252,14 @@ SCSTLun_start() {
 	echo "add_device ${OCF_RESKEY_device_name} ${params// /;}" > "${SCST_BASE}/handlers/${OCF_RESKEY_handler}/mgmt"	
 		 if [ $? -ne 0 ]; then
 			ocf_log err "FAILED to open device ${OCF_RESKEY_device_name}"
+
+			# close device
+			if [ -d "${SCST_BASE}/devices/${OCF_RESKEY_device_name}" ];then
+				ocf_log info "Closing device ${OCF_RESKEY_device_name}"
+				echo "del_device ${OCF_RESKEY_device_name}" > "${SCST_BASE}/handlers/vdisk_fileio/mgmt"
+				sleep 1
+			fi
+
 			return $OCF_ERR_GENERIC
 		 fi
 	
